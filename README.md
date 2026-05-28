@@ -14,7 +14,7 @@
       <a href="#"><img src="metrics.languages.svg" alt="Language Activity" width="100%"></a><br>
       <a href="#"><img src="metrics.anilist.svg" alt="AniList Favorite Characters" width="100%"></a><br>
       <a href="#"><img src="metrics.topics.svg" alt="Starred Topics" width="100%"></a><br>
-      <a href="#"><img src="https://github.com/user-attachments/assets/472ecc12-f1e1-4254-ab97-f0068442191f" alt="Website Screenshot 1" width="100%"></a>
+      <a href="#"><img src="https://github.com/user-attachments/assets/db608a94-224c-4afd-9377-7659075698ce" alt="Website Screenshot 1" width="100%"></a>
     </td>
     <td valign="top" width="50%">
       <!-- RIGHT COLUMN -->
