@@ -6,29 +6,22 @@
 
 ---
 
-<table border="0">
-  <tr>
-    <td valign="top" width="50%">
-      <!-- LEFT COLUMN -->
-      <a href="#"><img src="metrics.introduction.svg" alt="Introduction" width="100%"></a><br>
-      <a href="#"><img src="metrics.languages.svg" alt="Language Activity" width="100%"></a><br>
-      <a href="#"><img src="metrics.anilist.svg" alt="AniList Favorite Characters" width="100%"></a><br>
-      <a href="#"><img src="metrics.topics.svg" alt="Starred Topics" width="100%"></a><br>
-      <a href="#"><img src="https://github.com/user-attachments/assets/472ecc12-f1e1-4254-ab97-f0068442191f" alt="Website Screenshot 1" width="100%"></a>
-    </td>
-    <td valign="top" width="50%">
-      <!-- RIGHT COLUMN -->
-      <a href="#"><img src="metrics.isocalendar.svg" alt="Isometric Commit Calendar" width="100%"></a><br>
-      <a href="#"><img src="metrics.people.svg" alt="People (Followers/Following)" width="100%"></a><br>
-      <a href="#"><img src="metrics.music.svg" alt="Recently Played Music" width="100%"></a><br>
-      <a href="#"><img src="metrics.activity.svg" alt="Coding Habits" width="100%"></a><br>
-      <a href="#"><img src="https://github.com/user-attachments/assets/7d80477a-633a-4cf4-8719-1522f841d6c7" alt="Website Screenshot 2" width="100%"></a>
-    </td>
-  </tr>
-</table>
+<div align="center">
+  <img src="metrics.introduction.svg" width="48%">
+  <img src="https://github.com/user-attachments/assets/7d80477a-633a-4cf4-8719-1522f841d6c7" width="48%">
+  <br><br>
+  
+  <img src="metrics.languages.svg" width="48%">
+  <img src="metrics.isocalendar.svg" width="48%">
+  <br><br>
 
-<!-- CLEARFIX TO PREVENT OVERLAPPING -->
-<img width="100%" height="1" alt="spacer" src="https://gist.githubusercontent.com/lowlighter/3c6eaedf50273adfb7a510822672f570/raw/placeholder.svg">
+  <img src="metrics.people.svg" width="48%">
+  <img src="metrics.music.svg" width="48%">
+  <br><br>
+
+  <img src="https://github.com/user-attachments/assets/472ecc12-f1e1-4254-ab97-f0068442191f" width="48%">
+  <img src="metrics.anilist.svg" width="48%">
+</div>
 
 ---
 <p align="center">

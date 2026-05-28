@@ -63,7 +63,7 @@ jobs:
           base: ""
           plugin_anilist: yes
           plugin_anilist_medias: anime
-          plugin_anilist_limit: 2
+          plugin_anilist_limit: 6
           # REPLACE WITH YOUR ANILIST USERNAME
           plugin_anilist_user: zephyr4772
 
