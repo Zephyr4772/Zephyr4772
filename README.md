@@ -6,25 +6,26 @@
 
 ---
 
-<!-- ROW 1 -->
-[<img align="left" width="390" src="metrics.introduction.svg" alt="Introduction">](#)
-[<img align="right" width="390" src="metrics.isocalendar.svg" alt="Isometric Commit Calendar">](#)
-
-<!-- ROW 2 -->
-[<img align="left" width="390" src="metrics.languages.svg" alt="Language Activity">](#)
-[<img align="right" width="390" src="metrics.people.svg" alt="People (Followers/Following)">](#)
-
-<!-- ROW 3 -->
-[<img align="left" width="390" src="metrics.anilist.svg" alt="AniList Favorite Characters">](#)
-[<img align="right" width="390" src="metrics.music.svg" alt="Recently Played Music">](#)
-
-<!-- ROW 4 -->
-[<img align="left" width="390" src="metrics.topics.svg" alt="Starred Topics">](#)
-[<img align="right" width="390" src="metrics.activity.svg" alt="Recent Activity">](#)
-
-<!-- ROW 5 (Website Screenshots) -->
-[<img align="left" width="390" src="https://placehold.co/390x200/png?text=Website+Screenshot+1" alt="Website Screenshot 1">](#)
-[<img align="right" width="390" src="https://placehold.co/390x200/png?text=Website+Screenshot+2" alt="Website Screenshot 2">](#)
+<table border="0">
+  <tr>
+    <td valign="top" width="50%">
+      <!-- LEFT COLUMN -->
+      <a href="#"><img src="metrics.introduction.svg" alt="Introduction" width="100%"></a><br>
+      <a href="#"><img src="metrics.languages.svg" alt="Language Activity" width="100%"></a><br>
+      <a href="#"><img src="metrics.anilist.svg" alt="AniList Favorite Characters" width="100%"></a><br>
+      <a href="#"><img src="metrics.topics.svg" alt="Starred Topics" width="100%"></a><br>
+      <a href="#"><img src="https://placehold.co/390x200/png?text=Website+Screenshot+1" alt="Website Screenshot 1" width="100%"></a>
+    </td>
+    <td valign="top" width="50%">
+      <!-- RIGHT COLUMN -->
+      <a href="#"><img src="metrics.isocalendar.svg" alt="Isometric Commit Calendar" width="100%"></a><br>
+      <a href="#"><img src="metrics.people.svg" alt="People (Followers/Following)" width="100%"></a><br>
+      <a href="#"><img src="metrics.music.svg" alt="Recently Played Music" width="100%"></a><br>
+      <a href="#"><img src="metrics.activity.svg" alt="Coding Habits" width="100%"></a><br>
+      <a href="#"><img src="https://placehold.co/390x200/png?text=Website+Screenshot+2" alt="Website Screenshot 2" width="100%"></a>
+    </td>
+  </tr>
+</table>
 
 <!-- CLEARFIX TO PREVENT OVERLAPPING -->
 <img width="100%" height="1" alt="spacer" src="https://gist.githubusercontent.com/lowlighter/3c6eaedf50273adfb7a510822672f570/raw/placeholder.svg">
