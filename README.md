@@ -23,8 +23,8 @@
 [<img align="right" width="390" src="metrics.activity.svg" alt="Recent Activity">](#)
 
 <!-- ROW 5 (Website Screenshots) -->
-[<img align="left" width="390" src="https://via.placeholder.com/390x200.png?text=Website+Screenshot+1" alt="Website Screenshot 1">](#)
-[<img align="right" width="390" src="https://via.placeholder.com/390x200.png?text=Website+Screenshot+2" alt="Website Screenshot 2">](#)
+[<img align="left" width="390" src="https://placehold.co/390x200/png?text=Website+Screenshot+1" alt="Website Screenshot 1">](#)
+[<img align="right" width="390" src="https://placehold.co/390x200/png?text=Website+Screenshot+2" alt="Website Screenshot 2">](#)
 
 <!-- CLEARFIX TO PREVENT OVERLAPPING -->
 <img width="100%" height="1" alt="spacer" src="https://gist.githubusercontent.com/lowlighter/3c6eaedf50273adfb7a510822672f570/raw/placeholder.svg">
