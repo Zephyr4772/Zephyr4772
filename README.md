@@ -21,6 +21,7 @@
       <a href="#"><img src="metrics.isocalendar.svg" alt="Isometric Commit Calendar" width="100%"></a><br>
       <a href="#"><img src="metrics.people.svg" alt="People (Followers/Following)" width="100%"></a><br>
       <a href="#"><img src="metrics.music.svg" alt="Recently Played Music" width="100%"></a><br>
+      <a href="#"><img src="metrics.letterboxd.svg" alt="Favorite Movies (Letterboxd)" width="100%"></a><br>
       <a href="#"><img src="metrics.calendar.svg" alt="Full History Calendar" width="100%"></a><br>
       <a href="#"><img src="https://github.com/user-attachments/assets/7d80477a-633a-4cf4-8719-1522f841d6c7" alt="Website Screenshot 2" width="100%"></a>
     </td>
