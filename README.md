@@ -9,22 +9,18 @@
 <!-- ROW 1 -->
 [<img align="left" width="390" src="metrics.introduction.svg" alt="Introduction">](#)
 [<img align="right" width="390" src="metrics.isocalendar.svg" alt="Isometric Commit Calendar">](#)
-<img width="100%" height="1" alt="spacer" src="https://gist.githubusercontent.com/lowlighter/3c6eaedf50273adfb7a510822672f570/raw/placeholder.svg">
 
 <!-- ROW 2 -->
 [<img align="left" width="390" src="metrics.languages.svg" alt="Language Activity">](#)
 [<img align="right" width="390" src="metrics.people.svg" alt="People (Followers/Following)">](#)
-<img width="100%" height="1" alt="spacer" src="https://gist.githubusercontent.com/lowlighter/3c6eaedf50273adfb7a510822672f570/raw/placeholder.svg">
 
 <!-- ROW 3 -->
 [<img align="left" width="390" src="metrics.anilist.svg" alt="AniList Favorite Characters">](#)
 [<img align="right" width="390" src="metrics.music.svg" alt="Random Music from Playlist">](#)
-<img width="100%" height="1" alt="spacer" src="https://gist.githubusercontent.com/lowlighter/3c6eaedf50273adfb7a510822672f570/raw/placeholder.svg">
 
 <!-- ROW 4 -->
 [<img align="left" width="390" src="metrics.topics.svg" alt="Starred Topics">](#)
 [<img align="right" width="390" src="metrics.activity.svg" alt="Recent Activity">](#)
-<img width="100%" height="1" alt="spacer" src="https://gist.githubusercontent.com/lowlighter/3c6eaedf50273adfb7a510822672f570/raw/placeholder.svg">
 
 <!-- ROW 5 (Website Screenshots) -->
 [<img align="left" width="390" src="https://placehold.co/390x200/png?text=Website+Screenshot+1" alt="Website Screenshot 1">](#)
