@@ -16,7 +16,7 @@
 
 <!-- ROW 3 -->
 [<img align="left" width="390" src="metrics.anilist.svg" alt="AniList Favorite Characters">](#)
-[<img align="right" width="390" src="metrics.music.svg" alt="Random Music from Playlist">](#)
+[<img align="right" width="390" src="metrics.music.svg" alt="Recently Played Music">](#)
 
 <!-- ROW 4 -->
 [<img align="left" width="390" src="metrics.topics.svg" alt="Starred Topics">](#)
