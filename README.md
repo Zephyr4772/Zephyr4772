@@ -14,7 +14,7 @@
       <a href="#"><img src="metrics.languages.svg" alt="Language Activity" width="100%"></a><br>
       <a href="#"><img src="metrics.anilist.svg" alt="AniList Favorite Characters" width="100%"></a><br>
       <a href="#"><img src="metrics.topics.svg" alt="Starred Topics" width="100%"></a><br>
-      <a href="#"><img src="https://placehold.co/390x200/png?text=Website+Screenshot+1" alt="Website Screenshot 1" width="100%"></a>
+      <a href="#"><img src="https://github.com/user-attachments/assets/472ecc12-f1e1-4254-ab97-f0068442191f" alt="Website Screenshot 1" width="100%"></a>
     </td>
     <td valign="top" width="50%">
       <!-- RIGHT COLUMN -->
@@ -22,7 +22,7 @@
       <a href="#"><img src="metrics.people.svg" alt="People (Followers/Following)" width="100%"></a><br>
       <a href="#"><img src="metrics.music.svg" alt="Recently Played Music" width="100%"></a><br>
       <a href="#"><img src="metrics.activity.svg" alt="Coding Habits" width="100%"></a><br>
-      <a href="#"><img src="https://placehold.co/390x200/png?text=Website+Screenshot+2" alt="Website Screenshot 2" width="100%"></a>
+      <a href="#"><img src="https://github.com/user-attachments/assets/7d80477a-633a-4cf4-8719-1522f841d6c7" alt="Website Screenshot 2" width="100%"></a>
     </td>
   </tr>
 </table>
