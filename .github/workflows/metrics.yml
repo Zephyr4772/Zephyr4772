@@ -96,3 +96,13 @@ jobs:
           base: ""
           plugin_calendar: yes
           plugin_calendar_limit: 0
+
+      - name: 9. Letterboxd
+        uses: ./
+        with:
+          filename: metrics.letterboxd.svg
+          token: NOT_NEEDED
+          base: ""
+          plugin_letterboxd: yes
+          plugin_letterboxd_user: zephyr4772
+          plugin_letterboxd_limit: 4
