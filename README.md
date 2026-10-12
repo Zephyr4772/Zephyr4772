@@ -54,14 +54,6 @@ Built with one teammate as a diploma capstone. [8B](https://ollama.com/aryanvala
 
 ---
 
-### [HueCast](https://github.com/Zephyr4772) — air quality monitoring with an LLM assistant
-
-Real-time AQI for any city, pollutant breakdowns, and a Gemini-backed chat that answers questions in context of the current reading.
-
-`typescript` · `react` · `gemini`
-
----
-
 ## Published datasets
 
 - **[Indian_Supreme_Court_Judgments](https://huggingface.co/datasets/sinhal/Indian_Supreme_Court_Judgments)** — 41,876 judgments, converted from raw court PDFs to machine-readable text
