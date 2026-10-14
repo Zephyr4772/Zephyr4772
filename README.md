@@ -72,21 +72,30 @@ The judgment corpus is published as an open dataset: **[Indian_Supreme_Court_Jud
 
 ---
 
-### [ShipScript](https://github.com/Zephyr4772) — an MCP server that documents your repo for you
+### [Dr.Data](https://github.com/Zephyr4772/Dr.Data) — can this dataset support this use case?
 
-Analyzes a GitHub repo, detects the stack, screenshots the live deployment, generates charts, and drafts a README plus launch posts. Exposed as MCP tools, with a Gradio UI.
+A pre-training audit for tabular data. You give it a CSV and a use case (target, goal, time and entity columns, columns not known at prediction time). It runs ~200 controlled experiments and tells you whether training is worth it, then how to train.
 
-`mcp` · `litellm` · `playwright` · `gradio`
+- **Label-shuffle test:** a retail return-prediction target scored ROC-AUC 0.48 against 0.47–0.53 on shuffled labels. There was no learnable signal, so the verdict was "don't train, collect new information".
+- **Exact-formula leak search:** found `Profit = Sales − Cost` in 99.4% of rows and flagged the 106 rows that break it as data errors.
+- **Validation realism:** the same model scored R² 0.87 on a random split and 0.75 on a past-to-future split.
+- **Ground-truth check:** on a deliberately sabotaged copy of a clean dataset (score 97 → 60), it recovered every planted defect, estimating 6.5% label noise against ~6% planted.
+
+It then recommends a model (6-family bake-off with the one-standard-error rule), a decision threshold, loss curves to expect, a training-time estimate and scikit-learn starter code.
+
+`scikit-learn` · `fastapi` · `data-quality` · `evaluation`
 
 ---
 
-### [Hushiyar](https://ollama.com/aryanvala/hushiyar-alpha) — an 8B language model pretrained from scratch
+### [factory-sim](https://github.com/Zephyr4772/factory-sim) — discrete-event pipeline simulator in C++20
 
-~4TB of cleaned text, ~4 days of continuous distributed training across 8 rented NVIDIA H200s, trained to the point of diminishing gains. Shipped with a ~1B variant (decoder-only, RoPE, 32K context) for edge inference and a .NET chat application.
+Design a production line, service desk or software pipeline from sources, machines, conveyors, batchers, quality gates and sinks, then run it and watch buffers fill and machines starve, block and break down. It finds the bottleneck and measures which fix gives the most throughput.
 
-Built with one teammate as a diploma capstone. [8B](https://ollama.com/aryanvala/hushiyar-alpha) · [1B](https://ollama.com/aryanvala/hushiyar-lite)
+- **Engine:** min-heap event queue, integer-microsecond clock, bounded buffers with backpressure, MTBF/MTTR failures, deadlock detection, bit-reproducible runs.
+- **Factory Studio:** a browser drag-and-drop editor with animated replay, what-if analysis and 20-seed confidence intervals.
+- **Audit report:** a 0–100 health score with graded findings, as a multi-page PDF.
 
-`pytorch` · `multi-gpu` · `pretraining`
+`c++20` · `cmake` · `simulation`
 
 ---
 
