@@ -98,7 +98,7 @@ jobs:
           plugin_calendar_limit: 0
 
       - name: 9. Letterboxd
-        uses: ./
+        uses: Zephyr4772/metrics@feat/letterboxd-plugin
         with:
           filename: metrics.letterboxd.svg
           token: NOT_NEEDED
