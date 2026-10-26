@@ -99,6 +99,14 @@ Design a production line, service desk or software pipeline from sources, machin
 
 ---
 
+## Writing
+
+- **[A 2019 classifier ties a 2026 decision model on agent guardrails](https://zephyr4772.github.io/2019-classifier-ties-2026-decision-model/)**: zero-shot, the open decision model Laya (52.5%) is statistically tied with BART-large-MNLI from 2019 (49.2%) on 244 agent-guardrail decisions, and neither beats always giving the same answer (67.6%).
+
+More at **[zephyr4772.github.io](https://zephyr4772.github.io)**.
+
+---
+
 ## Published datasets
 
 - **[Indian_Supreme_Court_Judgments](https://huggingface.co/datasets/sinhal/Indian_Supreme_Court_Judgments)** — 41,839 judgments converted from raw court PDFs to machine-readable text, with a measured known-issues section
@@ -116,4 +124,4 @@ Working on **Devanagari text rendering in diffusion models** — training an SD1
 
 ## Reach me
 
-[Email](mailto:sinhalz4772@gmail.com) · [LinkedIn](https://www.linkedin.com/in/sinhaljjoshi) · [Hugging Face](https://huggingface.co/sinhal)
+[Email](mailto:sinhalz4772@gmail.com) · [LinkedIn](https://www.linkedin.com/in/sinhaljjoshi) · [Hugging Face](https://huggingface.co/sinhal) · [Blog](https://zephyr4772.github.io)
