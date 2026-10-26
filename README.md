@@ -50,7 +50,7 @@ Run on Kaggle 2× T4 with vLLM. Building it also surfaced and documented a **4.5
 
 ---
 
-### [yolo26-laptop-benchmark](https://github.com/Zephyr4772/yolo26-laptop-benchmark) — YOLO26 vs YOLO11 on a gaming laptop
+### [yolo26-laptop-benchmark](https://github.com/Zephyr4772/yolo26-laptop-benchmark) — YOLO26 vs YOLO11 across 8 runtimes
 
 8 runtimes (PyTorch, ONNX Runtime, OpenVINO FP32/INT8, CUDA FP32/FP16, TensorRT FP32/FP16), full COCO val2017 accuracy, held-out INT8 calibration, and interleaved timing.
 
@@ -102,6 +102,8 @@ Design a production line, service desk or software pipeline from sources, machin
 ## Writing
 
 - **[A 2019 classifier ties a 2026 decision model on agent guardrails](https://zephyr4772.github.io/2019-classifier-ties-2026-decision-model/)**: zero-shot, the open decision model Laya (52.5%) is statistically tied with BART-large-MNLI from 2019 (49.2%) on 244 agent-guardrail decisions, and neither beats always giving the same answer (67.6%).
+
+- **[On a laptop, the YOLO version is the smallest factor in how fast it runs](https://zephyr4772.github.io/yolo26-laptop-benchmark/)**: YOLO26 vs YOLO11 changes latency by about 5%, the runtime by 5.4×, and Windows' power mode by up to 7.8×, which nearly made me publish that YOLO26 was 50–90% faster.
 
 More at **[zephyr4772.github.io](https://zephyr4772.github.io)**.
 
