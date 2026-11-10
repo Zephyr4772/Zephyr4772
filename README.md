@@ -101,7 +101,7 @@ Design a production line, service desk or software pipeline from sources, machin
 
 ## Writing
 
-- **[Same CSV, different verdicts: checking whether your data can do the job before you train](https://zephyr4772.github.io/same-csv-different-verdicts/)**: with Dr.Data, one retail table scores 60/100 for predicting profit and 30/100 for predicting returns (the real labels do worse than shuffled ones), and a deliberately sabotaged medical dataset gives up every planted defect.
+- **[No model can fix data that doesn't fit the question](https://zephyr4772.github.io/same-csv-different-verdicts/)**: with Dr.Data, one retail table scores 60/100 for predicting profit and 30/100 for predicting returns (the real labels do worse than shuffled ones), and a deliberately sabotaged medical dataset gives up every planted defect.
 
 - **[A 2019 classifier ties a 2026 decision model on agent guardrails](https://zephyr4772.github.io/2019-classifier-ties-2026-decision-model/)**: zero-shot, the open decision model Laya (52.5%) is statistically tied with BART-large-MNLI from 2019 (49.2%) on 244 agent-guardrail decisions, and neither beats always giving the same answer (67.6%).
 
