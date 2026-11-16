@@ -8,7 +8,20 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 
 ## Open-source contributions
 
-- **[ultralytics/ultralytics #26624](https://github.com/ultralytics/ultralytics/pull/26624)** (merged): fixed TensorRT 11 FP16/INT8 export silently replacing a CUDA PyTorch build. The `nvidia-modelopt` auto-install let the resolver swap `torch 2.5.1+cu121` for a CPU-only PyPI wheel and half-uninstall `onnx`. The fix pins the installed torch through the existing `constrain=` mechanism. I reproduced it with dry runs of the real install path, and it was merged by the maintainers. Reported in [#26623](https://github.com/ultralytics/ultralytics/issues/26623).
+**8 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) and [evalscope](https://github.com/modelscope/evalscope), mostly finding evaluation and inference bugs that fail silently.
+
+- **[evalscope #2085](https://github.com/modelscope/evalscope/pull/2085): added the BBEH (BIG-Bench Extra Hard) benchmark.**
+  - All 23 tasks, with DeepMind's official answer matching ported as-is.
+  - BBEH Mini, and the paper's headline harmonic-mean score. The formula reproduces the reported number for all 13 models in the paper.
+  - On a real model run, all 460 BBEH Mini answers scored exactly as with DeepMind's unmodified scorer.
+- **[evalscope #2084](https://github.com/modelscope/evalscope/pull/2084):** local-model evals failed on every sample once transformers 5.23 started requiring chat messages as plain dicts. Caught on the day of that release.
+- **[ultralytics #27175](https://github.com/ultralytics/ultralytics/pull/27175):** with CUDA 12 PyTorch, auto-install pulled a CUDA 13 `onnxruntime-gpu`, so every ONNX predict, val and benchmark silently ran on the CPU. Reproduced on an RTX 4060.
+- **[ultralytics #26624](https://github.com/ultralytics/ultralytics/pull/26624):** TensorRT 11 export let the `nvidia-modelopt` auto-install replace CUDA PyTorch with a CPU-only wheel. The fix pins the installed torch through the existing `constrain=` mechanism. Reported in [#26623](https://github.com/ultralytics/ultralytics/issues/26623).
+- **lmms-eval, 4 merged:**
+  - [#1667](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1667): checked every task config against the Hugging Face Hub and fixed 18 tasks pointing at configs or splits that don't exist.
+  - [#1668](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1668): HF chat models failed every request under transformers 5.
+  - [#1666](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1666): the generic HF chat model loaded an Auto class with no `generate()`.
+  - [#1670](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1670): six vision models crashed on a single GPU.
 
 ---
 
