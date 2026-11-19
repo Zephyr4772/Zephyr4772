@@ -8,20 +8,29 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 
 ## Open-source contributions
 
-**8 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval) and [evalscope](https://github.com/modelscope/evalscope), mostly finding evaluation and inference bugs that fail silently.
+**11 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia) and [jsonargparse](https://github.com/mauvilsa/jsonargparse), mostly finding evaluation and inference bugs that fail silently.
 
 - **[evalscope #2085](https://github.com/modelscope/evalscope/pull/2085): added the BBEH (BIG-Bench Extra Hard) benchmark.**
   - All 23 tasks, with DeepMind's official answer matching ported as-is.
   - BBEH Mini, and the paper's headline harmonic-mean score. The formula reproduces the reported number for all 13 models in the paper.
   - On a real model run, all 460 BBEH Mini answers scored exactly as with DeepMind's unmodified scorer.
+- **[kornia #6816](https://github.com/kornia/kornia/pull/6816): made `AugmentationSequential` 22–37% faster on the GPU for common image pipelines.**
+  - The container built every child's transformation matrix on each call, even when nothing read it. It now builds them only when `.transform_matrix` is read.
+  - Outputs, matrices, boxes, keypoints and masks stay bitwise identical. The speed-up is the maintainer's own measurement on an RTX 4090, at batch 16 to 64.
 - **[evalscope #2084](https://github.com/modelscope/evalscope/pull/2084):** local-model evals failed on every sample once transformers 5.23 started requiring chat messages as plain dicts. Caught on the day of that release.
 - **[ultralytics #27175](https://github.com/ultralytics/ultralytics/pull/27175):** with CUDA 12 PyTorch, auto-install pulled a CUDA 13 `onnxruntime-gpu`, so every ONNX predict, val and benchmark silently ran on the CPU. Reproduced on an RTX 4060.
 - **[ultralytics #26624](https://github.com/ultralytics/ultralytics/pull/26624):** TensorRT 11 export let the `nvidia-modelopt` auto-install replace CUDA PyTorch with a CPU-only wheel. The fix pins the installed torch through the existing `constrain=` mechanism. Reported in [#26623](https://github.com/ultralytics/ultralytics/issues/26623).
-- **lmms-eval, 4 merged:**
+- **lmms-eval, 5 merged:**
   - [#1667](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1667): checked every task config against the Hugging Face Hub and fixed 18 tasks pointing at configs or splits that don't exist.
+  - [#1671](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1671): chat models were shown every image twice on STARE, MMT, Geometry3K, MathCanvas and PhysBench.
   - [#1668](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1668): HF chat models failed every request under transformers 5.
   - [#1666](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1666): the generic HF chat model loaded an Auto class with no `generate()`.
   - [#1670](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1670): six vision models crashed on a single GPU.
+- **[jsonargparse #1035](https://github.com/mauvilsa/jsonargparse/pull/1035):** config files were saved and read with the locale encoding, so on Windows `save()` crashed on non-ASCII values and UTF-8 configs were misread.
+
+**In review:**
+- **[doctr #2232](https://github.com/mindee/doctr/pull/2232):** since May, the SAR and MASTER text recognizers each lost one ReLU from their backbone, because a default activation module was shared between layers. That cost MASTER 8.9 points and SAR 12.0 points of word accuracy on IIIT5K, and the bug ships in the v1.1.0 release. Found in real use and bisected to the commit that introduced it.
+- **[ms-swift #10591](https://github.com/modelscope/ms-swift/pull/10591):** SmolVLM and SmolVLM2 support, and a fix to the Idefics3 template so its encodings match the Hugging Face processor token for token.
 
 ---
 
@@ -113,6 +122,10 @@ Design a production line, service desk or software pipeline from sources, machin
 ---
 
 ## Writing
+
+- **[Eval harnesses fail in two ways, and the quiet one is worse](https://zephyr4772.github.io/eval-harness-quiet-failures/)**: bugs I fixed in three LLM and VLM evaluation harnesses where nothing crashed: a math metric that scored `7 = 7` as wrong on Windows, saved results that vanished into a hidden NTFS stream, prompts that showed every image twice, and 32 benchmark tasks whose Hub data no longer exists.
+
+- **[Ultralytics' auto-install quietly took my GPU away, twice](https://zephyr4772.github.io/ultralytics-autoinstall-gpu/)**: once by installing a CUDA 13 ONNX Runtime next to CUDA 12 PyTorch, so models ran on the CPU about 3× slower, and once by swapping CUDA PyTorch for a CPU-only build in the middle of a TensorRT export.
 
 - **[No model can fix data that doesn't fit the question](https://zephyr4772.github.io/same-csv-different-verdicts/)**: with Dr.Data, one retail table scores 60/100 for predicting profit and 30/100 for predicting returns (the real labels do worse than shuffled ones), and a deliberately sabotaged medical dataset gives up every planted defect.
 
