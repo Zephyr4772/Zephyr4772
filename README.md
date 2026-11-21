@@ -8,7 +8,7 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 
 ## Open-source contributions
 
-**11 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia) and [jsonargparse](https://github.com/mauvilsa/jsonargparse), mostly finding evaluation and inference bugs that fail silently.
+**12 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia), [doctr](https://github.com/mindee/doctr) and [jsonargparse](https://github.com/mauvilsa/jsonargparse), mostly finding evaluation and inference bugs that fail silently.
 
 - **[evalscope #2085](https://github.com/modelscope/evalscope/pull/2085): added the BBEH (BIG-Bench Extra Hard) benchmark.**
   - All 23 tasks, with DeepMind's official answer matching ported as-is.
@@ -17,6 +17,9 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 - **[kornia #6816](https://github.com/kornia/kornia/pull/6816): made `AugmentationSequential` 22–37% faster on the GPU for common image pipelines.**
   - The container built every child's transformation matrix on each call, even when nothing read it. It now builds them only when `.transform_matrix` is read.
   - Outputs, matrices, boxes, keypoints and masks stay bitwise identical. The speed-up is the maintainer's own measurement on an RTX 4090, at batch 16 to 64.
+- **[doctr #2232](https://github.com/mindee/doctr/pull/2232): restored 8.9 and 12.0 points of word accuracy to the MASTER and SAR text recognizers.**
+  - Since May, each had lost one ReLU from its backbone, because a default activation module was shared between layers. The bug shipped in the v1.1.0 release.
+  - Found in real use (MASTER garbled an invoice), bisected to the commit that introduced it, and measured on IIIT5K.
 - **[evalscope #2084](https://github.com/modelscope/evalscope/pull/2084):** local-model evals failed on every sample once transformers 5.23 started requiring chat messages as plain dicts. Caught on the day of that release.
 - **[ultralytics #27175](https://github.com/ultralytics/ultralytics/pull/27175):** with CUDA 12 PyTorch, auto-install pulled a CUDA 13 `onnxruntime-gpu`, so every ONNX predict, val and benchmark silently ran on the CPU. Reproduced on an RTX 4060.
 - **[ultralytics #26624](https://github.com/ultralytics/ultralytics/pull/26624):** TensorRT 11 export let the `nvidia-modelopt` auto-install replace CUDA PyTorch with a CPU-only wheel. The fix pins the installed torch through the existing `constrain=` mechanism. Reported in [#26623](https://github.com/ultralytics/ultralytics/issues/26623).
@@ -29,7 +32,10 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 - **[jsonargparse #1035](https://github.com/mauvilsa/jsonargparse/pull/1035):** config files were saved and read with the locale encoding, so on Windows `save()` crashed on non-ASCII values and UTF-8 configs were misread.
 
 **In review:**
-- **[doctr #2232](https://github.com/mindee/doctr/pull/2232):** since May, the SAR and MASTER text recognizers each lost one ReLU from their backbone, because a default activation module was shared between layers. That cost MASTER 8.9 points and SAR 12.0 points of word accuracy on IIIT5K, and the bug ships in the v1.1.0 release. Found in real use and bisected to the commit that introduced it.
+- **Numbers in Indian-language AI** ([gujnorm](https://github.com/Zephyr4772/gujnorm)): fixes from testing how Sarvam's TTS, AI4Bharat's tools and IndicTrans2 handle written Gujarati and Hindi numbers.
+  - [sarvamai/indic-numtowords #5](https://github.com/sarvamai/indic-numtowords/pull/5) and [AI4Bharat/indic-numtowords #16](https://github.com/AI4Bharat/indic-numtowords/pull/16): a misspelled Hindi "सवा" in 9 entries, Gujarati crore written in Punjabi script, and the missing Gujarati variations.
+  - [IndicTransToolkit #32](https://github.com/VarunGumma/IndicTransToolkit/pull/32): Indian-grouped ₹ amounts were split or changed in translation ("₹1 crore" became "₹1,000"). Split numbers drop from 26 to 3 per model, with no new errors.
+  - [sarvamai/skills #47](https://github.com/sarvamai/skills/pull/47): documents that Gujarati numbers need normalizing before Bulbul TTS.
 - **[ms-swift #10591](https://github.com/modelscope/ms-swift/pull/10591):** SmolVLM and SmolVLM2 support, and a fix to the Idefics3 template so its encodings match the Hugging Face processor token for token.
 
 ---
@@ -122,6 +128,8 @@ Design a production line, service desk or software pipeline from sources, machin
 ---
 
 ## Writing
+
+- **[Half past nine, ₹1.5 lakh, ₹1 crore: where Indian-language AI gets numbers wrong](https://zephyr4772.github.io/gujarati-numbers/)**: Sarvam's Bulbul voices misread half the Gujarati sentences that contain a number (59/55/56 of 108); a 0.13 ms text normalizer brings that to 0/2/1, confirmed by a blind listening test (0/20 → 19/20, p = 0.00008). Also: Sarvam's spoken-form API turning 9:30 into 10:15, and IndicTrans2 turning ₹1 crore into ₹1,000.
 
 - **[Eval harnesses fail in two ways, and the quiet one is worse](https://zephyr4772.github.io/eval-harness-quiet-failures/)**: bugs I fixed in three LLM and VLM evaluation harnesses where nothing crashed: a math metric that scored `7 = 7` as wrong on Windows, saved results that vanished into a hidden NTFS stream, prompts that showed every image twice, and 32 benchmark tasks whose Hub data no longer exists.
 
