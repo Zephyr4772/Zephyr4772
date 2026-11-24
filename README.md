@@ -8,7 +8,7 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 
 ## Open-source contributions
 
-**12 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia), [doctr](https://github.com/mindee/doctr) and [jsonargparse](https://github.com/mauvilsa/jsonargparse), mostly finding evaluation and inference bugs that fail silently.
+**13 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia), [doctr](https://github.com/mindee/doctr) and [jsonargparse](https://github.com/mauvilsa/jsonargparse), mostly finding evaluation and inference bugs that fail silently.
 
 - **[evalscope #2085](https://github.com/modelscope/evalscope/pull/2085): added the BBEH (BIG-Bench Extra Hard) benchmark.**
   - All 23 tasks, with DeepMind's official answer matching ported as-is.
@@ -17,6 +17,9 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 - **[kornia #6816](https://github.com/kornia/kornia/pull/6816): made `AugmentationSequential` 22–37% faster on the GPU for common image pipelines.**
   - The container built every child's transformation matrix on each call, even when nothing read it. It now builds them only when `.transform_matrix` is read.
   - Outputs, matrices, boxes, keypoints and masks stay bitwise identical. The speed-up is the maintainer's own measurement on an RTX 4090, at batch 16 to 64.
+- **[kornia #6899](https://github.com/kornia/kornia/pull/6899): made `crop_by_indices` crop the same under `torch.export`, ONNX and `torch.compile` as in eager mode.**
+  - Graph capture resampled any box that wasn't exactly the output size with `align_corners=True`, up to 0.98 off the eager crop. It now uses the same gather as `torch.compile`.
+  - Checked on torch 2.5 through 2.15: the ONNX difference went from 0.25/0.23/0.99 to 1e-7/0/0 (bilinear/bicubic/nearest).
 - **[doctr #2232](https://github.com/mindee/doctr/pull/2232): restored 8.9 and 12.0 points of word accuracy to the MASTER and SAR text recognizers.**
   - Since May, each had lost one ReLU from its backbone, because a default activation module was shared between layers. The bug shipped in the v1.1.0 release.
   - Found in real use (MASTER garbled an invoice), bisected to the commit that introduced it, and measured on IIIT5K.
@@ -36,7 +39,13 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
   - [sarvamai/indic-numtowords #5](https://github.com/sarvamai/indic-numtowords/pull/5) and [AI4Bharat/indic-numtowords #16](https://github.com/AI4Bharat/indic-numtowords/pull/16): a misspelled Hindi "सवा" in 9 entries, Gujarati crore written in Punjabi script, and the missing Gujarati variations.
   - [IndicTransToolkit #32](https://github.com/VarunGumma/IndicTransToolkit/pull/32): Indian-grouped ₹ amounts were split or changed in translation ("₹1 crore" became "₹1,000"). Split numbers drop from 26 to 3 per model, with no new errors.
   - [sarvamai/skills #47](https://github.com/sarvamai/skills/pull/47): documents that Gujarati numbers need normalizing before Bulbul TTS.
+- **[evalscope #2193](https://github.com/modelscope/evalscope/pull/2193):** the MMLU-Indic benchmark, Sarvam's MMLU in 10 Indian languages in native and romanized script (21 configs, 293k questions).
 - **[ms-swift #10591](https://github.com/modelscope/ms-swift/pull/10591):** SmolVLM and SmolVLM2 support, and a fix to the Idefics3 template so its encodings match the Hugging Face processor token for token.
+- **Data tools on Windows:** bugs found by running the tools on Windows, where their CI didn't reach.
+  - [jc #918](https://github.com/kellyjonbrazil/jc/pull/918): `jc --kv < file` printed `{}`, because the cmd.exe call that enables colors consumed a file-redirected input.
+  - [csvkit #1395](https://github.com/wireservice/csvkit/pull/1395): csvkit couldn't read its own output (`csvcut a.csv | csvsort` failed on "é"), and `--add-bom` wrote a UTF-8 BOM before cp1252 text.
+  - [datacompy #619](https://github.com/capitalone/datacompy/pull/619) and [markdown-it-py #486](https://github.com/executablebooks/markdown-it-py/pull/486): redirecting the report or HTML to a file crashed on characters outside cp1252.
+  - [jupytext #1719](https://github.com/jupytext/jupytext/pull/1719): `--paired-paths` always exited with 1, so editor extensions couldn't tell success from failure.
 
 ---
 
