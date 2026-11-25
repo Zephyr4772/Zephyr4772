@@ -8,7 +8,7 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 
 ## Open-source contributions
 
-**13 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia), [doctr](https://github.com/mindee/doctr) and [jsonargparse](https://github.com/mauvilsa/jsonargparse), mostly finding evaluation and inference bugs that fail silently.
+**14 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia), [doctr](https://github.com/mindee/doctr), [jsonargparse](https://github.com/mauvilsa/jsonargparse) and [jc](https://github.com/kellyjonbrazil/jc), mostly finding evaluation and inference bugs that fail silently.
 
 - **[evalscope #2085](https://github.com/modelscope/evalscope/pull/2085): added the BBEH (BIG-Bench Extra Hard) benchmark.**
   - All 23 tasks, with DeepMind's official answer matching ported as-is.
@@ -33,6 +33,7 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
   - [#1666](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1666): the generic HF chat model loaded an Auto class with no `generate()`.
   - [#1670](https://github.com/EvolvingLMMs-Lab/lmms-eval/pull/1670): six vision models crashed on a single GPU.
 - **[jsonargparse #1035](https://github.com/mauvilsa/jsonargparse/pull/1035):** config files were saved and read with the locale encoding, so on Windows `save()` crashed on non-ASCII values and UTF-8 configs were misread.
+- **[jc #918](https://github.com/kellyjonbrazil/jc/pull/918):** on Windows, `jc --kv < file` printed `{}`. The `os.system('')` call that turns on terminal colors started a cmd.exe that inherited jc's input and read a redirected file to the end. Reported in [#917](https://github.com/kellyjonbrazil/jc/issues/917).
 
 **In review:**
 - **Numbers in Indian-language AI** ([gujnorm](https://github.com/Zephyr4772/gujnorm)): fixes from testing how Sarvam's TTS, AI4Bharat's tools and IndicTrans2 handle written Gujarati and Hindi numbers.
@@ -40,9 +41,9 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
   - [IndicTransToolkit #32](https://github.com/VarunGumma/IndicTransToolkit/pull/32): Indian-grouped ₹ amounts were split or changed in translation ("₹1 crore" became "₹1,000"). Split numbers drop from 26 to 3 per model, with no new errors.
   - [sarvamai/skills #47](https://github.com/sarvamai/skills/pull/47): documents that Gujarati numbers need normalizing before Bulbul TTS.
 - **[evalscope #2193](https://github.com/modelscope/evalscope/pull/2193):** the MMLU-Indic benchmark, Sarvam's MMLU in 10 Indian languages in native and romanized script (21 configs, 293k questions).
+- **[evalscope #2209](https://github.com/modelscope/evalscope/pull/2209):** local-model evals with `temperature: 0` crashed on every sample for Qwen and Llama instruct models; temperature 0 now means greedy decoding.
 - **[ms-swift #10591](https://github.com/modelscope/ms-swift/pull/10591):** SmolVLM and SmolVLM2 support, and a fix to the Idefics3 template so its encodings match the Hugging Face processor token for token.
 - **Data tools on Windows:** bugs found by running the tools on Windows, where their CI didn't reach.
-  - [jc #918](https://github.com/kellyjonbrazil/jc/pull/918): `jc --kv < file` printed `{}`, because the cmd.exe call that enables colors consumed a file-redirected input.
   - [csvkit #1395](https://github.com/wireservice/csvkit/pull/1395): csvkit couldn't read its own output (`csvcut a.csv | csvsort` failed on "é"), and `--add-bom` wrote a UTF-8 BOM before cp1252 text.
   - [datacompy #619](https://github.com/capitalone/datacompy/pull/619) and [markdown-it-py #486](https://github.com/executablebooks/markdown-it-py/pull/486): redirecting the report or HTML to a file crashed on characters outside cp1252.
   - [jupytext #1719](https://github.com/jupytext/jupytext/pull/1719): `--paired-paths` always exited with 1, so editor extensions couldn't tell success from failure.
