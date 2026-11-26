@@ -8,8 +8,11 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 
 ## Open-source contributions
 
-**14 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia), [doctr](https://github.com/mindee/doctr), [jsonargparse](https://github.com/mauvilsa/jsonargparse) and [jc](https://github.com/kellyjonbrazil/jc), mostly finding evaluation and inference bugs that fail silently.
+**15 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia), [doctr](https://github.com/mindee/doctr), [jsonargparse](https://github.com/mauvilsa/jsonargparse) and [jc](https://github.com/kellyjonbrazil/jc), mostly finding evaluation and inference bugs that fail silently.
 
+- **[evalscope #2193](https://github.com/modelscope/evalscope/pull/2193): added the MMLU-Indic benchmark** (Sarvam AI's MMLU in 10 Indian languages).
+  - 21 configs: Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil and Telugu in native script and romanized, plus English. 293,179 questions, all loaded and checked against the real dataset.
+  - Few-shot on the test-only romanized configs raises a clear error instead of assuming a split exists, and the docs (English and Chinese) explain Sarvam's "Indic Average".
 - **[evalscope #2085](https://github.com/modelscope/evalscope/pull/2085): added the BBEH (BIG-Bench Extra Hard) benchmark.**
   - All 23 tasks, with DeepMind's official answer matching ported as-is.
   - BBEH Mini, and the paper's headline harmonic-mean score. The formula reproduces the reported number for all 13 models in the paper.
@@ -40,7 +43,6 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
   - [sarvamai/indic-numtowords #5](https://github.com/sarvamai/indic-numtowords/pull/5) and [AI4Bharat/indic-numtowords #16](https://github.com/AI4Bharat/indic-numtowords/pull/16): a misspelled Hindi "सवा" in 9 entries, Gujarati crore written in Punjabi script, and the missing Gujarati variations.
   - [IndicTransToolkit #32](https://github.com/VarunGumma/IndicTransToolkit/pull/32): Indian-grouped ₹ amounts were split or changed in translation ("₹1 crore" became "₹1,000"). Split numbers drop from 26 to 3 per model, with no new errors.
   - [sarvamai/skills #47](https://github.com/sarvamai/skills/pull/47): documents that Gujarati numbers need normalizing before Bulbul TTS.
-- **[evalscope #2193](https://github.com/modelscope/evalscope/pull/2193):** the MMLU-Indic benchmark, Sarvam's MMLU in 10 Indian languages in native and romanized script (21 configs, 293k questions).
 - **[evalscope #2209](https://github.com/modelscope/evalscope/pull/2209):** local-model evals with `temperature: 0` crashed on every sample for Qwen and Llama instruct models; temperature 0 now means greedy decoding.
 - **[ms-swift #10591](https://github.com/modelscope/ms-swift/pull/10591):** SmolVLM and SmolVLM2 support, and a fix to the Idefics3 template so its encodings match the Hugging Face processor token for token.
 - **Data tools on Windows:** bugs found by running the tools on Windows, where their CI didn't reach.
