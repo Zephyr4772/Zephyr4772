@@ -8,8 +8,14 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 
 ## Open-source contributions
 
-**15 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia), [doctr](https://github.com/mindee/doctr), [jsonargparse](https://github.com/mauvilsa/jsonargparse) and [jc](https://github.com/kellyjonbrazil/jc), mostly finding evaluation and inference bugs that fail silently.
+**18 merged PRs** in [Ultralytics](https://github.com/ultralytics/ultralytics), [lmms-eval](https://github.com/EvolvingLMMs-Lab/lmms-eval), [evalscope](https://github.com/modelscope/evalscope), [kornia](https://github.com/kornia/kornia), [doctr](https://github.com/mindee/doctr), [jsonargparse](https://github.com/mauvilsa/jsonargparse) and [jc](https://github.com/kellyjonbrazil/jc), mostly finding evaluation and inference bugs that fail silently.
 
+- **[evalscope #2235](https://github.com/modelscope/evalscope/pull/2235): added Global-MMLU and Global-MMLU-Lite** (Cohere Labs' MMLU in 42 languages, plus the 23-language human-translated set).
+  - 5-shot with each question's examples from its own subject, and culturally sensitive vs culturally agnostic accuracy in one run, the paper's central comparison.
+  - Validated all 598,963 questions and found four data quirks, each handled and tested: 39 options lost in translation, a Burmese row with no question, Hungarian subject names, and Welsh without a dev split.
+- **[evalscope #2220](https://github.com/modelscope/evalscope/pull/2220): added IndicGenBench FLORES-IN and CrossSum-IN** (Google, ACL 2024): translation both ways between English and 29 Indian languages, and cross-lingual summarization.
+  - Corpus chrF per language, macro-averaged per direction, matching SacreBLEU exactly.
+  - Reproduced the paper with BLOOMZ-7B on the full test sets (en→hi 67.6 vs 65.2, hi→en 60.7 vs 57.3).
 - **[evalscope #2193](https://github.com/modelscope/evalscope/pull/2193): added the MMLU-Indic benchmark** (Sarvam AI's MMLU in 10 Indian languages).
   - 21 configs: Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Tamil and Telugu in native script and romanized, plus English. 293,179 questions, all loaded and checked against the real dataset.
   - Few-shot on the test-only romanized configs raises a clear error instead of assuming a split exists, and the docs (English and Chinese) explain Sarvam's "Indic Average".
@@ -26,6 +32,7 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
 - **[doctr #2232](https://github.com/mindee/doctr/pull/2232): restored 8.9 and 12.0 points of word accuracy to the MASTER and SAR text recognizers.**
   - Since May, each had lost one ReLU from its backbone, because a default activation module was shared between layers. The bug shipped in the v1.1.0 release.
   - Found in real use (MASTER garbled an invoice), bisected to the commit that introduced it, and measured on IIIT5K.
+- **[evalscope #2209](https://github.com/modelscope/evalscope/pull/2209):** local-model evals with `temperature: 0` crashed on every sample for Qwen and Llama instruct models; temperature 0 now means greedy decoding.
 - **[evalscope #2084](https://github.com/modelscope/evalscope/pull/2084):** local-model evals failed on every sample once transformers 5.23 started requiring chat messages as plain dicts. Caught on the day of that release.
 - **[ultralytics #27175](https://github.com/ultralytics/ultralytics/pull/27175):** with CUDA 12 PyTorch, auto-install pulled a CUDA 13 `onnxruntime-gpu`, so every ONNX predict, val and benchmark silently ran on the CPU. Reproduced on an RTX 4060.
 - **[ultralytics #26624](https://github.com/ultralytics/ultralytics/pull/26624):** TensorRT 11 export let the `nvidia-modelopt` auto-install replace CUDA PyTorch with a CPU-only wheel. The fix pins the installed torch through the existing `constrain=` mechanism. Reported in [#26623](https://github.com/ultralytics/ultralytics/issues/26623).
@@ -43,12 +50,15 @@ Most of what I publish falls into one of two buckets: systems that retrieve and 
   - [sarvamai/indic-numtowords #5](https://github.com/sarvamai/indic-numtowords/pull/5) and [AI4Bharat/indic-numtowords #16](https://github.com/AI4Bharat/indic-numtowords/pull/16): a misspelled Hindi "सवा" in 9 entries, Gujarati crore written in Punjabi script, and the missing Gujarati variations.
   - [IndicTransToolkit #32](https://github.com/VarunGumma/IndicTransToolkit/pull/32): Indian-grouped ₹ amounts were split or changed in translation ("₹1 crore" became "₹1,000"). Split numbers drop from 26 to 3 per model, with no new errors.
   - [sarvamai/skills #47](https://github.com/sarvamai/skills/pull/47): documents that Gujarati numbers need normalizing before Bulbul TTS.
-- **[evalscope #2209](https://github.com/modelscope/evalscope/pull/2209):** local-model evals with `temperature: 0` crashed on every sample for Qwen and Llama instruct models; temperature 0 now means greedy decoding.
+- **[kornia #6953](https://github.com/kornia/kornia/pull/6953): kornia 0.9.2 benchmark results on a Kaggle T4** (24 files, CPU and CUDA, eager and compiled), with follow-ups from its review:
+  - [#6959](https://github.com/kornia/kornia/pull/6959): every benchmark cell is now timed at least three times, so slow ops no longer publish one sample with a spread of 0 (the approach the maintainer chose in [#6956](https://github.com/kornia/kornia/issues/6956)).
+  - [#6954](https://github.com/kornia/kornia/pull/6954): the docs digest called kornia-rs timings Kornia's slowest op. [#6955](https://github.com/kornia/kornia/pull/6955): results record the SciPy and torchmorph versions.
 - **[ms-swift #10591](https://github.com/modelscope/ms-swift/pull/10591):** SmolVLM and SmolVLM2 support, and a fix to the Idefics3 template so its encodings match the Hugging Face processor token for token.
 - **Data tools on Windows:** bugs found by running the tools on Windows, where their CI didn't reach.
   - [csvkit #1395](https://github.com/wireservice/csvkit/pull/1395): csvkit couldn't read its own output (`csvcut a.csv | csvsort` failed on "é"), and `--add-bom` wrote a UTF-8 BOM before cp1252 text.
   - [datacompy #619](https://github.com/capitalone/datacompy/pull/619) and [markdown-it-py #486](https://github.com/executablebooks/markdown-it-py/pull/486): redirecting the report or HTML to a file crashed on characters outside cp1252.
   - [jupytext #1719](https://github.com/jupytext/jupytext/pull/1719): `--paired-paths` always exited with 1, so editor extensions couldn't tell success from failure.
+  - [jello #78](https://github.com/kellyjonbrazil/jello/pull/78): on Windows, piped JSON was read and written as cp1252, so non-ASCII text crashed or was garbled.
 
 ---
 
